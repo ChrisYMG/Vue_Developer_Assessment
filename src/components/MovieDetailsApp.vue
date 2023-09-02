@@ -50,15 +50,16 @@ export default {
         const response = await axios.get(
           `http://www.omdbapi.com/?t=${this.searchQuery}&apikey=5249c43b`
         );
-        const searchResult = response.data;
 
-        if (searchResult.Title) {
+        const data = response.data;
+
+        if (data.Title) {
           const movieInfo = {
-            title: searchResult.Title,
-            poster: searchResult.Poster,
-            released: searchResult.Released,
-            rating: searchResult.Ratings[1].Value,
-            plot: searchResult.Plot,
+            title: data.Title,
+            poster: data.Poster,
+            released: data.Released,
+            rating: data.Ratings[1].Value,
+            plot: data.Plot,
           };
 
           this.searchResults = [movieInfo];
